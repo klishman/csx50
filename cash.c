@@ -22,53 +22,36 @@ int get_cents(void)
     return amount;
 }
 
+int calculate_coins(int amount, char* label, int divisor)
+{
+
+    int total = amount/divisor;
+    if (amount >= divisor)
+    {
+        printf("Total %s: %i\n", label,total);
+    }
+    return total;
+}
+
 int calculate_quarters(int amount)
 {
-    int quarter = 25;
-    int total_quarters = amount/quarter;
-    if (amount >= quarter)
-    {
-        printf("Total Quarters: %i\n", total_quarters);
-    }
-    return total_quarters;
+    return calculate_coins(amount,"Quarter",25);
 }
 
 int calculate_dimes(int amount)
-{
-    int dime = 10;
-    int total_dimes = amount/dime;
 
-    if (amount >= dime)
-    {
-        printf("Total Dimes: %i\n",total_dimes);
-    }
-    return total_dimes;
+{
+    return calculate_coins(amount,"Dime",10);
 }
 
-int calculate_nickels(int cents)
+int calculate_nickels(int amount)
 {
-    int nickel = 5;
-    int total_nickel = cents / nickel;
-
-    if (cents >= nickel)
-    {
-        {
-            printf("Total Nickels: %i\n", total_nickel);
-        }
-    }
-    return total_nickel;
+    return calculate_coins(amount,"Nickel",5);
 }
 
 int calculate_pennies(int amount)
 {
-    int penny = 1;
-    int total_pennies =  amount / penny;
-
-    if (amount >= penny)
-    {
-        printf("Total Pennies: %i\n", total_pennies);
-    }
-    return total_pennies;
+    return calculate_coins(amount,"Penny",1);
 }
 int main(void)
 {
@@ -81,7 +64,7 @@ int main(void)
 
     // Calculate the number of dimes to give the customer
     int dimes = calculate_dimes(cents);
-    cents = cents - dimes * 10;
+   cents = cents - dimes * 10;
 
     // Calculate the number of nickels to give the customer
     int nickels = calculate_nickels(cents);
