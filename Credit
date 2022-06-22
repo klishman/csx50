@@ -1,0 +1,46 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+
+//So far, this method takes an interger, scans it
+//converts it to a char and counts the chars
+// evaluates the length of the number for validity
+long count_card(void)
+{
+    int count = 0;
+    int digit = 0;
+    long card_number;
+    int sum = 0;
+
+    printf("WHATCHA CARD? ");
+    scanf("%ld", &card_number);
+
+    do
+    {
+        count++;
+        digit = card_number % 10;
+        card_number /= 10;
+
+        printf("(%i) %i ", count, digit);
+
+    } while (card_number != 0);
+    {
+        if (count >= 13 && count <= 16)
+        {
+            printf("VALID ");
+        }
+        else
+        {
+            printf("Please provide a valid card! ");
+            // int last_number = card_number/10;
+            // int second_last = card_number%10;
+        };
+        return count;
+    }
+}
+//so we've counted a card length, now we have to do math
+int main(void)
+{
+    count_card();
+}
+    // Then the count_card is true and the math is true, we return
